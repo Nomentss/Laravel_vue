@@ -12,7 +12,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $task = Task::all();
+        return response()->json($task);
     }
 
     /**
@@ -28,7 +29,16 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $validated = $request->validate([
+            'title' => 'required|string|min:3',
+        ]);
+
+        $task = Task::create($validated);
+
+        return response()->json([
+            'message' => 'Tâche créée avec succès',
+            'data' => $task
+        ], 201);
     }
 
     /**
@@ -50,16 +60,30 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Task $task)
+    public function update($id)
     {
-        //
+        $task = Task::findOrFail($id);
+
+        $task->is_completed = !$task->is_completed;
+        $task->save();
+
+        return response()->json([
+            'message' => 'Statut modifié',
+            'data' => $task
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Task $task)
+    public function destroy($id)
     {
-        //
+        $task = Task::findOrFail($id);
+
+        $task->delete();
+
+        return response()->json([
+            'message' => 'Tâche supprimée'
+        ]);
     }
 }
