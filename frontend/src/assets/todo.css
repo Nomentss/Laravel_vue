@@ -1,0 +1,266 @@
+/* ===== Layout général ===== */
+.todo-app {
+  max-width: 640px;
+  margin: 2rem auto;
+  padding: 1.75rem;
+  background: #f4f4f5;
+  color: #1f2937;
+  border-radius: 1.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ===== Header ===== */
+.todo-app__header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.todo-app__logo {
+  font-size: 1.5rem;
+}
+
+.todo-app__title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #18181b;
+}
+
+.todo-app__emoji {
+  font-size: 1.3rem;
+}
+
+/* ===== Barre d'outils (input + filtres) ===== */
+.todo-app__toolbar {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.todo-app__toolbar > :first-child {
+  flex: 1;
+  min-width: 220px;
+}
+
+.todo-app__filters {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 0.15rem;
+}
+
+.todo-app__filter {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid #e4e4e7;
+  background: #fff;
+  color: #52525b;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.todo-app__filter--active {
+  background: #18181b;
+  color: #fff;
+  border-color: #18181b;
+}
+
+/* ===== Barre de progression ===== */
+.todo-app__progress {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.todo-app__progress-value {
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  color: #27272a;
+}
+
+.todo-app__progress-track {
+  height: 6px;
+  border-radius: 9999px;
+  background: #e4e4e7;
+  overflow: hidden;
+}
+
+.todo-app__progress-fill {
+  height: 100%;
+  background: #3b82f6;
+  border-radius: 9999px;
+  transition: width 0.25s ease;
+}
+
+.todo-app__progress-remaining {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+/* ===== Messages d'état ===== */
+.todo-app__error {
+  color: #dc2626;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.todo-app__loading,
+.todo-app__empty {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.9rem;
+  padding: 1.5rem 0;
+  list-style: none;
+}
+
+/* ===== Liste des tâches ===== */
+.todo-app__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Formulaire d'ajout (TodoInput) ===== */
+.todo-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.todo-input__field {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  border: 1.5px solid #86efac;
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  outline: none;
+  background: #fff;
+  color: #1f2937;
+  caret-color: #1f2937;
+  transition: border-color 0.15s ease;
+  box-sizing: border-box;
+}
+
+.todo-input__field::placeholder {
+  color: #9ca3af;
+}
+
+.todo-input__field:focus {
+  border-color: #22c55e;
+}
+
+.todo-input__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  align-self: flex-start;
+  padding: 0.65rem 1.5rem;
+  background: #22c55e;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+.todo-input__submit:hover:not(:disabled) {
+  background: #16a34a;
+}
+
+.todo-input__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.todo-input__submit-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.todo-input__hint {
+  margin: -0.4rem 0 0 0.25rem;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+/* ===== Ligne de tâche (TodoItem) ===== */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.9rem 1.1rem;
+  background: #fff;
+  border-radius: 1rem;
+  list-style: none;
+}
+
+.todo-item__check {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.todo-item__check--done {
+  background: #22c55e;
+  border-color: #22c55e;
+}
+
+.todo-item__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.todo-item__title {
+  margin: 0;
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 0.95rem;
+}
+
+.todo-item--done .todo-item__title {
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.todo-item__subtitle {
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.todo-item__delete {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid #fecaca;
+  background: #fff5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.todo-item__delete:hover {
+  background: #fee2e2;
+}
